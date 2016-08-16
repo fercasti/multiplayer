@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title>My A-Frame Scene</title>
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>
+</head>
+
+<body>
+  <a-scene firebase="apiKey: AIzaSyC3cvrmG_hOE6lvYD7iSX8GN8Pp4Vc1S10;
+                     authDomain: fercastillo-127fd.firebaseapp.com;
+                     databaseURL: https://fercastillo-127fd.firebaseio.com;
+                     storageBucket: fercastillo-127fd.appspot.com">
+
+    <a-assets>
+      <!-- Using mixins to decrease amount of data send over the wire. -->
+      <a-mixin id="avatar-head"
+              geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+              material="color: #222"></a-mixin>
+    </a-assets>
+
+    <a-entity id="avatar" mixin="avatar-head"
+              camera look-controls wasd-controls
+              firebase-broadcast="components: mixin, position, rotation"
+              position="0 1.8 5">
+
+
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
